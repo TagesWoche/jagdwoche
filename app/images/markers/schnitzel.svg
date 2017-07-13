@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="258px" height="411px" viewBox="0 0 258 411" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>Slice 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="tanzen" transform="translate(0.000000, 1.000000)">
+            <path d="M129,8.92683619e-15 C85.0153526,-0.0144661149 44.1040742,22.5558026 20.6584542,59.7707501 C-2.78716574,96.9856976 -5.48274559,143.632065 13.52,183.3 C13.99,184.25 129,409.61 129,409.61 L243.07,186.11 C263.284943,146.426666 261.420211,99.0885754 238.146356,61.1183429 C214.872501,23.1481105 173.535501,0.00454741792 129,0.01 L129,0.01 L129,8.92683619e-15 Z" id="Shape" fill="#30A370" fill-rule="nonzero"></path>
+            <circle id="Oval" stroke="#FFFFFF" stroke-width="11" cx="126.75" cy="125.15" r="95.44"></circle>
+        </g>
+        <text id="?" font-family="NHaasGroteskDSPro-65Md, Neue Haas Grotesk Display Pro" font-size="130" font-weight="500" fill="#FFFFFF">
+            <tspan x="97" y="174">?</tspan>
+        </text>
+    </g>
+</svg>

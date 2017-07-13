@@ -1,0 +1,306 @@
+<!doctype html>
+<html ng-app="projekteApp">
+  <head>
+      <meta charset="utf-8">
+      <meta http-Equiv="Cache-Control" Content="no-cache">
+      <meta http-Equiv="Pragma" Content="no-cache">
+      <meta http-Equiv="Expires" Content="0">
+      <title>TagesWoche: Jagdwoche in Basel</title>
+      <meta name="description" content="Jagdwoche bei der TagesWoche vom 17. bis 21. Juli. Mitmachen und VIP-Tickets für das IMFLUSS-Festival gewinnen!">
+      <meta name="author" content="Stephanie Gygax, Christine Waelti" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Facebook -->
+      <meta property="og:url" content="https://www.tageswoche.ch/jagdwoche/" />
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="Jagdwoche in Basel" />
+      <meta property="og:description" content="Jagdwoche bei der TagesWoche vom 17. bis 21. Juli. Mitmachen und VIP-Tickets für das IMFLUSS-Festival gewinnen!" />
+      <meta property="og:image" content="http://interaktiv.tageswoche.ch/2017/jagdwoche/images/social/fbshare.jpg" />
+      <meta property="og:image:width" content="2000" />
+      <meta property="og:image:height" content="1126" />
+      <!-- Twitter -->
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:url" content="https://www.tageswoche.ch/jagdwoche/">
+      <meta name="twitter:site" content="@tageswoche">
+      <meta name="twitter:title" content="Jagdwoche in Basel">
+      <meta name="twitter:description" content="Jagdwoche bei der TagesWoche vom 17. bis 21. Juli. Mitmachen und VIP-Tickets für das IMFLUSS-Festival gewinnen!">
+
+      <meta name="twitter:creator" content="@tageswoche">
+      <meta name="twitter:image:src" content="http://interaktiv.tageswoche.ch/2017/jagdwoche/images/social/fbshare.jpg">
+
+      <meta name="twitter:domain" content="tageswoche.ch">
+      <meta property="twitter:account_id" content="287795165" />
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    
+    
+  </head>
+  <body ng-controller="showHideMapCtrl">
+      
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="spinner" ng-show="loading">
+        <div class="inner-spinner"></div>
+    </div>
+
+    <h1 class="starttitel" ng-class="hideTitel"></h1>
+
+    <!-- Add your site or application content here -->
+    <a id="startbutton" style="display:none;" ng-click="toggleMap()" href="{{ startbuttonLink }}" target="_self">{{buttonText}}</a>
+      
+    <section ng-controller="mapCtrl" id="mapContainer" ng-show="showmap">
+
+        <leaflet lf-center="basel" event-broadcast="events" markers="markers" defaults="defaults" layers="layers"></leaflet>
+
+        <!-- mobile hamburger navigation -->
+        <input type="checkbox" id="mobilenav" class="mobilenav" /><label for="mobilenav"></label>
+
+        <div id="legende">
+            <!-- Karte gemäss http://tombatossals.github.io/angular-leaflet-directive/examples/0000-viewer.html#/markers/groups-example -->
+            <div class="map-branding">
+
+                <h1 class="map-title">
+                    <a href="#" rel="home"><svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 120 31" style="enable-background:new 0 0 120 31;" xml:space="preserve">
+<g>
+	<path class="st0" d="M4,3.8H0.3v-3h10.6v3H7.2v19.3H4V3.8z"/>
+	<path class="st0" d="M16.9,21.6L16.9,21.6c-0.5,0.6-0.9,1-1.3,1.4c-0.4,0.3-1,0.5-1.8,0.5c-0.4,0-0.8-0.1-1.2-0.2
+		c-0.4-0.1-0.8-0.3-1.1-0.6c-0.3-0.3-0.6-0.7-0.8-1.3c-0.2-0.6-0.3-1.3-0.3-2.2c0-0.9,0.1-1.7,0.2-2.4c0.1-0.7,0.4-1.2,0.8-1.7
+		c0.4-0.4,0.9-0.8,1.6-1c0.6-0.2,1.5-0.3,2.5-0.3c0.2,0,0.5,0,0.7,0c0.2,0,0.5,0,0.8,0.1v-1.7c0-0.5-0.1-1-0.3-1.4
+		c-0.2-0.4-0.6-0.5-1.3-0.5c-0.4,0-0.8,0.1-1.1,0.4c-0.3,0.3-0.6,0.7-0.7,1.2h-3.1c0.1-1.4,0.6-2.6,1.4-3.5c0.4-0.4,0.9-0.7,1.5-1
+		c0.6-0.2,1.2-0.4,2-0.4c0.7,0,1.3,0.1,1.9,0.3c0.6,0.2,1.1,0.5,1.5,0.9c0.4,0.4,0.8,0.9,1,1.6c0.3,0.6,0.4,1.4,0.4,2.2v11.1h-3.2
+		V21.6z M16.9,16.3c-0.4-0.1-0.6-0.1-0.9-0.1c-0.7,0-1.3,0.2-1.8,0.5c-0.5,0.3-0.7,0.9-0.7,1.8c0,0.6,0.1,1.1,0.4,1.5
+		c0.3,0.4,0.7,0.6,1.2,0.6c0.5,0,1-0.2,1.3-0.5c0.3-0.4,0.5-0.9,0.5-1.5V16.3z"/>
+	<path class="st0" d="M25.7,25c0,0.4,0.2,0.7,0.5,1.1c0.3,0.3,0.7,0.5,1.2,0.5c0.5,0,0.9-0.2,1.1-0.5c0.2-0.3,0.3-0.7,0.3-1.2v-3.1
+		h-0.1c-0.4,0.5-0.8,0.9-1.3,1.2c-0.5,0.3-1.1,0.4-1.7,0.4c-1.3,0-2.3-0.5-2.8-1.5c-0.2-0.4-0.3-0.8-0.4-1.3
+		c-0.1-0.5-0.1-1.2-0.1-2.1v-6.1c0-1.2,0-2,0.1-2.5c0.1-0.5,0.2-1,0.4-1.3c0.3-0.4,0.6-0.8,1.1-1c0.4-0.3,1-0.4,1.8-0.4
+		c0.4,0,0.7,0,1,0.1c0.3,0.1,0.5,0.2,0.8,0.3c0.2,0.1,0.4,0.3,0.6,0.5c0.2,0.2,0.4,0.4,0.6,0.6V7.3h3.2v17.9c0,0.5-0.1,1.1-0.3,1.6
+		c-0.2,0.6-0.5,1.1-0.9,1.5c-0.4,0.4-0.9,0.8-1.5,1.1c-0.6,0.3-1.3,0.4-2.2,0.4c-0.5,0-1-0.1-1.5-0.2c-0.5-0.2-1-0.4-1.5-0.8
+		c-0.5-0.4-0.8-0.9-1.2-1.5c-0.3-0.6-0.5-1.4-0.6-2.3H25.7z M25.7,18.3c0,0.5,0.1,0.9,0.3,1.3c0.2,0.4,0.6,0.6,1.2,0.6
+		c0.5,0,0.8-0.2,1.1-0.5c0.3-0.3,0.5-0.7,0.5-1.2v-6.2c0-0.6-0.1-1.1-0.4-1.4c-0.3-0.4-0.7-0.5-1.2-0.5c-0.5,0-0.9,0.2-1.2,0.6
+		c-0.3,0.4-0.4,0.9-0.4,1.6V18.3z"/>
+	<path class="st0" d="M37.6,16.4v2.2c0,0.5,0.1,0.9,0.4,1.2c0.3,0.3,0.7,0.4,1.1,0.4c0.6,0,1-0.2,1.2-0.5c0.2-0.4,0.3-0.7,0.4-1.1
+		H44c0,0.7-0.1,1.3-0.3,1.9c-0.2,0.6-0.5,1.1-1,1.5c-0.4,0.4-0.9,0.8-1.5,1c-0.6,0.3-1.2,0.4-2,0.4c-1,0-1.8-0.2-2.5-0.6
+		c-0.7-0.4-1.3-1-1.6-1.7c-0.2-0.4-0.4-0.9-0.5-1.4c-0.1-0.5-0.1-1.1-0.1-1.8v-5.2c0-0.6,0-1.2,0.1-1.8c0.1-0.5,0.2-1,0.5-1.4
+		c0.4-0.7,0.9-1.2,1.6-1.7c0.7-0.4,1.6-0.6,2.5-0.6c0.7,0,1.4,0.1,2,0.4c0.6,0.3,1.1,0.6,1.5,1.1c0.4,0.5,0.7,1,0.9,1.6
+		c0.2,0.6,0.3,1.3,0.3,1.9v4.4H37.6z M37.6,13.9h3.1v-1.8c0-0.6-0.1-1.1-0.4-1.4c-0.3-0.3-0.7-0.5-1.1-0.5c-0.5,0-0.9,0.2-1.1,0.5
+		c-0.3,0.3-0.4,0.8-0.4,1.4V13.9z"/>
+	<path class="st0" d="M52.1,11.7c0-0.5-0.2-1-0.5-1.2c-0.3-0.3-0.7-0.4-1.1-0.4c-0.5,0-0.9,0.2-1.2,0.5c-0.3,0.3-0.4,0.7-0.4,1.1
+		c0,0.3,0.1,0.6,0.2,0.9c0.1,0.3,0.5,0.5,1.1,0.8l1.9,0.8c1.2,0.5,2,1.1,2.5,1.9c0.4,0.8,0.7,1.7,0.7,2.6c0,0.7-0.1,1.3-0.4,1.9
+		c-0.2,0.6-0.6,1.1-1,1.5c-0.4,0.4-0.9,0.8-1.5,1c-0.6,0.3-1.2,0.4-1.9,0.4c-0.6,0-1.2-0.1-1.8-0.3c-0.6-0.2-1.1-0.5-1.5-0.9
+		c-0.4-0.4-0.8-0.9-1.1-1.5c-0.3-0.6-0.4-1.3-0.4-2.1h3c0.1,0.4,0.2,0.8,0.5,1.2c0.2,0.4,0.7,0.6,1.3,0.6c0.5,0,0.9-0.2,1.2-0.5
+		c0.4-0.3,0.5-0.7,0.5-1.3c0-0.4-0.1-0.8-0.3-1.1c-0.2-0.3-0.6-0.6-1.3-0.8l-1.5-0.6c-1-0.4-1.8-0.9-2.4-1.7
+		c-0.6-0.7-0.9-1.6-0.9-2.7c0-0.7,0.1-1.3,0.4-1.9c0.3-0.6,0.6-1.1,1-1.5c0.4-0.4,0.9-0.7,1.5-1c0.6-0.2,1.2-0.3,1.8-0.3
+		c0.6,0,1.3,0.1,1.8,0.4c0.6,0.2,1,0.6,1.4,1c0.4,0.4,0.7,0.9,0.9,1.5c0.2,0.6,0.3,1.2,0.3,1.8H52.1z"/>
+</g>
+<g>
+	<path class="st0" d="M70.3,23.2h-3L64.8,8.7h-0.1l-2.4,14.5h-3L56,0.8h3.4L61,15h0.1l2.5-14.2H66l2.6,14.5h0.1l1.5-14.5h3.4
+		L70.3,23.2z"/>
+	<path class="st0" d="M74.8,12.6c0-0.6,0-1.2,0.1-1.8c0.1-0.5,0.2-1,0.5-1.4c0.4-0.7,0.9-1.2,1.6-1.7c0.7-0.4,1.6-0.6,2.5-0.6
+		c1,0,1.8,0.2,2.5,0.6c0.7,0.4,1.3,1,1.6,1.7c0.2,0.4,0.4,0.9,0.5,1.4c0.1,0.5,0.1,1.1,0.1,1.8v5.2c0,0.6,0,1.2-0.1,1.8
+		c-0.1,0.5-0.2,1-0.5,1.4c-0.4,0.7-0.9,1.2-1.6,1.7c-0.7,0.4-1.6,0.6-2.5,0.6c-1,0-1.8-0.2-2.5-0.6c-0.7-0.4-1.3-1-1.6-1.7
+		c-0.2-0.4-0.4-0.9-0.5-1.4c-0.1-0.5-0.1-1.1-0.1-1.8V12.6z M78,18.4c0,0.6,0.1,1.1,0.4,1.4c0.3,0.3,0.7,0.5,1.1,0.5
+		c0.5,0,0.9-0.2,1.1-0.5c0.3-0.3,0.4-0.8,0.4-1.4v-6.2c0-0.6-0.1-1.1-0.4-1.4c-0.3-0.3-0.7-0.5-1.1-0.5c-0.5,0-0.9,0.2-1.1,0.5
+		C78.1,11,78,11.5,78,12.1V18.4z"/>
+	<path class="st0" d="M89.5,18.6c0,0.5,0.1,0.9,0.4,1.2c0.3,0.3,0.7,0.4,1.1,0.4c0.6,0,1-0.2,1.2-0.5c0.2-0.4,0.3-0.7,0.4-1.1h3.2
+		c0,0.7-0.1,1.3-0.3,1.9c-0.2,0.6-0.5,1.1-1,1.5c-0.4,0.4-0.9,0.8-1.5,1c-0.6,0.3-1.2,0.4-2,0.4c-1,0-1.8-0.2-2.5-0.6
+		c-0.7-0.4-1.3-1-1.6-1.7c-0.2-0.4-0.4-0.9-0.5-1.4c-0.1-0.5-0.1-1.1-0.1-1.8v-5.2c0-0.6,0-1.2,0.1-1.8c0.1-0.5,0.2-1,0.5-1.4
+		c0.4-0.7,0.9-1.2,1.6-1.7c0.7-0.4,1.6-0.6,2.5-0.6c0.7,0,1.4,0.1,2,0.4s1.1,0.6,1.5,1.1c0.4,0.5,0.7,1,0.9,1.6
+		c0.2,0.6,0.3,1.3,0.3,2h-3.2c0-0.6-0.1-1.1-0.4-1.4c-0.3-0.3-0.7-0.5-1.1-0.5c-0.5,0-0.9,0.2-1.1,0.5c-0.3,0.3-0.4,0.8-0.4,1.4
+		V18.6z"/>
+	<path class="st0" d="M98.1,0.8h3.2v8h0.1c0.3-0.5,0.7-0.9,1.2-1.2c0.5-0.3,1.1-0.5,1.8-0.5c0.4,0,0.8,0.1,1.2,0.2
+		c0.4,0.1,0.8,0.4,1.1,0.7c0.3,0.3,0.6,0.7,0.8,1.2c0.2,0.5,0.3,1.1,0.3,1.8v12.2h-3.2v-11c0-0.6-0.1-1-0.4-1.4
+		c-0.3-0.3-0.7-0.5-1.2-0.5c-0.6,0-1,0.2-1.3,0.6c-0.2,0.4-0.3,0.9-0.3,1.6v10.7h-3.2V0.8z"/>
+	<path class="st0" d="M113.3,16.4v2.2c0,0.5,0.1,0.9,0.4,1.2c0.3,0.3,0.7,0.4,1.1,0.4c0.6,0,1-0.2,1.2-0.5c0.2-0.4,0.3-0.7,0.4-1.1
+		h3.2c0,0.7-0.1,1.3-0.3,1.9c-0.2,0.6-0.5,1.1-1,1.5c-0.4,0.4-0.9,0.8-1.5,1s-1.2,0.4-2,0.4c-1,0-1.8-0.2-2.5-0.6
+		c-0.7-0.4-1.3-1-1.6-1.7c-0.2-0.4-0.4-0.9-0.5-1.4c-0.1-0.5-0.1-1.1-0.1-1.8v-5.2c0-0.6,0-1.2,0.1-1.8c0.1-0.5,0.2-1,0.5-1.4
+		c0.4-0.7,0.9-1.2,1.6-1.7c0.7-0.4,1.6-0.6,2.5-0.6c0.7,0,1.4,0.1,2,0.4c0.6,0.3,1.1,0.6,1.5,1.1c0.4,0.5,0.7,1,0.9,1.6
+		c0.2,0.6,0.3,1.3,0.3,1.9v4.4H113.3z M113.3,13.9h3.1v-1.8c0-0.6-0.1-1.1-0.4-1.4c-0.3-0.3-0.7-0.5-1.1-0.5c-0.5,0-0.9,0.2-1.1,0.5
+		c-0.3,0.3-0.4,0.8-0.4,1.4V13.9z"/>
+</g>
+</svg>
+                    </a>
+                </h1>
+
+                <div class="nook-map"><svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 120 120" style="enable-background:new 0 0 120 120;" xml:space="preserve">
+<polygon points="0,0 119.8,119.8 119.8,0 "/>
+</svg>
+                </div>
+
+            </div><!-- .site-branding -->
+
+            
+            <h2>{{ parsedEntries[0].einleitungtitel }}</h2>
+            <p>{{ parsedEntries[0].einleitung }}</p>
+
+        </div>
+        
+    </section>
+
+    <section ng-controller="dataFeedCtrl" class="site" id="content">
+
+        <header id="masthead" class="site-header" role="banner">
+
+            <div class="site-branding">
+
+                <h1 class="site-title">
+                    <a href="#" rel="home"><svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 120 31" style="enable-background:new 0 0 120 31;" xml:space="preserve">
+<g>
+	<path class="st0" d="M4,3.8H0.3v-3h10.6v3H7.2v19.3H4V3.8z"/>
+	<path class="st0" d="M16.9,21.6L16.9,21.6c-0.5,0.6-0.9,1-1.3,1.4c-0.4,0.3-1,0.5-1.8,0.5c-0.4,0-0.8-0.1-1.2-0.2
+		c-0.4-0.1-0.8-0.3-1.1-0.6c-0.3-0.3-0.6-0.7-0.8-1.3c-0.2-0.6-0.3-1.3-0.3-2.2c0-0.9,0.1-1.7,0.2-2.4c0.1-0.7,0.4-1.2,0.8-1.7
+		c0.4-0.4,0.9-0.8,1.6-1c0.6-0.2,1.5-0.3,2.5-0.3c0.2,0,0.5,0,0.7,0c0.2,0,0.5,0,0.8,0.1v-1.7c0-0.5-0.1-1-0.3-1.4
+		c-0.2-0.4-0.6-0.5-1.3-0.5c-0.4,0-0.8,0.1-1.1,0.4c-0.3,0.3-0.6,0.7-0.7,1.2h-3.1c0.1-1.4,0.6-2.6,1.4-3.5c0.4-0.4,0.9-0.7,1.5-1
+		c0.6-0.2,1.2-0.4,2-0.4c0.7,0,1.3,0.1,1.9,0.3c0.6,0.2,1.1,0.5,1.5,0.9c0.4,0.4,0.8,0.9,1,1.6c0.3,0.6,0.4,1.4,0.4,2.2v11.1h-3.2
+		V21.6z M16.9,16.3c-0.4-0.1-0.6-0.1-0.9-0.1c-0.7,0-1.3,0.2-1.8,0.5c-0.5,0.3-0.7,0.9-0.7,1.8c0,0.6,0.1,1.1,0.4,1.5
+		c0.3,0.4,0.7,0.6,1.2,0.6c0.5,0,1-0.2,1.3-0.5c0.3-0.4,0.5-0.9,0.5-1.5V16.3z"/>
+	<path class="st0" d="M25.7,25c0,0.4,0.2,0.7,0.5,1.1c0.3,0.3,0.7,0.5,1.2,0.5c0.5,0,0.9-0.2,1.1-0.5c0.2-0.3,0.3-0.7,0.3-1.2v-3.1
+		h-0.1c-0.4,0.5-0.8,0.9-1.3,1.2c-0.5,0.3-1.1,0.4-1.7,0.4c-1.3,0-2.3-0.5-2.8-1.5c-0.2-0.4-0.3-0.8-0.4-1.3
+		c-0.1-0.5-0.1-1.2-0.1-2.1v-6.1c0-1.2,0-2,0.1-2.5c0.1-0.5,0.2-1,0.4-1.3c0.3-0.4,0.6-0.8,1.1-1c0.4-0.3,1-0.4,1.8-0.4
+		c0.4,0,0.7,0,1,0.1c0.3,0.1,0.5,0.2,0.8,0.3c0.2,0.1,0.4,0.3,0.6,0.5c0.2,0.2,0.4,0.4,0.6,0.6V7.3h3.2v17.9c0,0.5-0.1,1.1-0.3,1.6
+		c-0.2,0.6-0.5,1.1-0.9,1.5c-0.4,0.4-0.9,0.8-1.5,1.1c-0.6,0.3-1.3,0.4-2.2,0.4c-0.5,0-1-0.1-1.5-0.2c-0.5-0.2-1-0.4-1.5-0.8
+		c-0.5-0.4-0.8-0.9-1.2-1.5c-0.3-0.6-0.5-1.4-0.6-2.3H25.7z M25.7,18.3c0,0.5,0.1,0.9,0.3,1.3c0.2,0.4,0.6,0.6,1.2,0.6
+		c0.5,0,0.8-0.2,1.1-0.5c0.3-0.3,0.5-0.7,0.5-1.2v-6.2c0-0.6-0.1-1.1-0.4-1.4c-0.3-0.4-0.7-0.5-1.2-0.5c-0.5,0-0.9,0.2-1.2,0.6
+		c-0.3,0.4-0.4,0.9-0.4,1.6V18.3z"/>
+	<path class="st0" d="M37.6,16.4v2.2c0,0.5,0.1,0.9,0.4,1.2c0.3,0.3,0.7,0.4,1.1,0.4c0.6,0,1-0.2,1.2-0.5c0.2-0.4,0.3-0.7,0.4-1.1
+		H44c0,0.7-0.1,1.3-0.3,1.9c-0.2,0.6-0.5,1.1-1,1.5c-0.4,0.4-0.9,0.8-1.5,1c-0.6,0.3-1.2,0.4-2,0.4c-1,0-1.8-0.2-2.5-0.6
+		c-0.7-0.4-1.3-1-1.6-1.7c-0.2-0.4-0.4-0.9-0.5-1.4c-0.1-0.5-0.1-1.1-0.1-1.8v-5.2c0-0.6,0-1.2,0.1-1.8c0.1-0.5,0.2-1,0.5-1.4
+		c0.4-0.7,0.9-1.2,1.6-1.7c0.7-0.4,1.6-0.6,2.5-0.6c0.7,0,1.4,0.1,2,0.4c0.6,0.3,1.1,0.6,1.5,1.1c0.4,0.5,0.7,1,0.9,1.6
+		c0.2,0.6,0.3,1.3,0.3,1.9v4.4H37.6z M37.6,13.9h3.1v-1.8c0-0.6-0.1-1.1-0.4-1.4c-0.3-0.3-0.7-0.5-1.1-0.5c-0.5,0-0.9,0.2-1.1,0.5
+		c-0.3,0.3-0.4,0.8-0.4,1.4V13.9z"/>
+	<path class="st0" d="M52.1,11.7c0-0.5-0.2-1-0.5-1.2c-0.3-0.3-0.7-0.4-1.1-0.4c-0.5,0-0.9,0.2-1.2,0.5c-0.3,0.3-0.4,0.7-0.4,1.1
+		c0,0.3,0.1,0.6,0.2,0.9c0.1,0.3,0.5,0.5,1.1,0.8l1.9,0.8c1.2,0.5,2,1.1,2.5,1.9c0.4,0.8,0.7,1.7,0.7,2.6c0,0.7-0.1,1.3-0.4,1.9
+		c-0.2,0.6-0.6,1.1-1,1.5c-0.4,0.4-0.9,0.8-1.5,1c-0.6,0.3-1.2,0.4-1.9,0.4c-0.6,0-1.2-0.1-1.8-0.3c-0.6-0.2-1.1-0.5-1.5-0.9
+		c-0.4-0.4-0.8-0.9-1.1-1.5c-0.3-0.6-0.4-1.3-0.4-2.1h3c0.1,0.4,0.2,0.8,0.5,1.2c0.2,0.4,0.7,0.6,1.3,0.6c0.5,0,0.9-0.2,1.2-0.5
+		c0.4-0.3,0.5-0.7,0.5-1.3c0-0.4-0.1-0.8-0.3-1.1c-0.2-0.3-0.6-0.6-1.3-0.8l-1.5-0.6c-1-0.4-1.8-0.9-2.4-1.7
+		c-0.6-0.7-0.9-1.6-0.9-2.7c0-0.7,0.1-1.3,0.4-1.9c0.3-0.6,0.6-1.1,1-1.5c0.4-0.4,0.9-0.7,1.5-1c0.6-0.2,1.2-0.3,1.8-0.3
+		c0.6,0,1.3,0.1,1.8,0.4c0.6,0.2,1,0.6,1.4,1c0.4,0.4,0.7,0.9,0.9,1.5c0.2,0.6,0.3,1.2,0.3,1.8H52.1z"/>
+</g>
+<g>
+	<path class="st0" d="M70.3,23.2h-3L64.8,8.7h-0.1l-2.4,14.5h-3L56,0.8h3.4L61,15h0.1l2.5-14.2H66l2.6,14.5h0.1l1.5-14.5h3.4
+		L70.3,23.2z"/>
+	<path class="st0" d="M74.8,12.6c0-0.6,0-1.2,0.1-1.8c0.1-0.5,0.2-1,0.5-1.4c0.4-0.7,0.9-1.2,1.6-1.7c0.7-0.4,1.6-0.6,2.5-0.6
+		c1,0,1.8,0.2,2.5,0.6c0.7,0.4,1.3,1,1.6,1.7c0.2,0.4,0.4,0.9,0.5,1.4c0.1,0.5,0.1,1.1,0.1,1.8v5.2c0,0.6,0,1.2-0.1,1.8
+		c-0.1,0.5-0.2,1-0.5,1.4c-0.4,0.7-0.9,1.2-1.6,1.7c-0.7,0.4-1.6,0.6-2.5,0.6c-1,0-1.8-0.2-2.5-0.6c-0.7-0.4-1.3-1-1.6-1.7
+		c-0.2-0.4-0.4-0.9-0.5-1.4c-0.1-0.5-0.1-1.1-0.1-1.8V12.6z M78,18.4c0,0.6,0.1,1.1,0.4,1.4c0.3,0.3,0.7,0.5,1.1,0.5
+		c0.5,0,0.9-0.2,1.1-0.5c0.3-0.3,0.4-0.8,0.4-1.4v-6.2c0-0.6-0.1-1.1-0.4-1.4c-0.3-0.3-0.7-0.5-1.1-0.5c-0.5,0-0.9,0.2-1.1,0.5
+		C78.1,11,78,11.5,78,12.1V18.4z"/>
+	<path class="st0" d="M89.5,18.6c0,0.5,0.1,0.9,0.4,1.2c0.3,0.3,0.7,0.4,1.1,0.4c0.6,0,1-0.2,1.2-0.5c0.2-0.4,0.3-0.7,0.4-1.1h3.2
+		c0,0.7-0.1,1.3-0.3,1.9c-0.2,0.6-0.5,1.1-1,1.5c-0.4,0.4-0.9,0.8-1.5,1c-0.6,0.3-1.2,0.4-2,0.4c-1,0-1.8-0.2-2.5-0.6
+		c-0.7-0.4-1.3-1-1.6-1.7c-0.2-0.4-0.4-0.9-0.5-1.4c-0.1-0.5-0.1-1.1-0.1-1.8v-5.2c0-0.6,0-1.2,0.1-1.8c0.1-0.5,0.2-1,0.5-1.4
+		c0.4-0.7,0.9-1.2,1.6-1.7c0.7-0.4,1.6-0.6,2.5-0.6c0.7,0,1.4,0.1,2,0.4s1.1,0.6,1.5,1.1c0.4,0.5,0.7,1,0.9,1.6
+		c0.2,0.6,0.3,1.3,0.3,2h-3.2c0-0.6-0.1-1.1-0.4-1.4c-0.3-0.3-0.7-0.5-1.1-0.5c-0.5,0-0.9,0.2-1.1,0.5c-0.3,0.3-0.4,0.8-0.4,1.4
+		V18.6z"/>
+	<path class="st0" d="M98.1,0.8h3.2v8h0.1c0.3-0.5,0.7-0.9,1.2-1.2c0.5-0.3,1.1-0.5,1.8-0.5c0.4,0,0.8,0.1,1.2,0.2
+		c0.4,0.1,0.8,0.4,1.1,0.7c0.3,0.3,0.6,0.7,0.8,1.2c0.2,0.5,0.3,1.1,0.3,1.8v12.2h-3.2v-11c0-0.6-0.1-1-0.4-1.4
+		c-0.3-0.3-0.7-0.5-1.2-0.5c-0.6,0-1,0.2-1.3,0.6c-0.2,0.4-0.3,0.9-0.3,1.6v10.7h-3.2V0.8z"/>
+	<path class="st0" d="M113.3,16.4v2.2c0,0.5,0.1,0.9,0.4,1.2c0.3,0.3,0.7,0.4,1.1,0.4c0.6,0,1-0.2,1.2-0.5c0.2-0.4,0.3-0.7,0.4-1.1
+		h3.2c0,0.7-0.1,1.3-0.3,1.9c-0.2,0.6-0.5,1.1-1,1.5c-0.4,0.4-0.9,0.8-1.5,1s-1.2,0.4-2,0.4c-1,0-1.8-0.2-2.5-0.6
+		c-0.7-0.4-1.3-1-1.6-1.7c-0.2-0.4-0.4-0.9-0.5-1.4c-0.1-0.5-0.1-1.1-0.1-1.8v-5.2c0-0.6,0-1.2,0.1-1.8c0.1-0.5,0.2-1,0.5-1.4
+		c0.4-0.7,0.9-1.2,1.6-1.7c0.7-0.4,1.6-0.6,2.5-0.6c0.7,0,1.4,0.1,2,0.4c0.6,0.3,1.1,0.6,1.5,1.1c0.4,0.5,0.7,1,0.9,1.6
+		c0.2,0.6,0.3,1.3,0.3,1.9v4.4H113.3z M113.3,13.9h3.1v-1.8c0-0.6-0.1-1.1-0.4-1.4c-0.3-0.3-0.7-0.5-1.1-0.5c-0.5,0-0.9,0.2-1.1,0.5
+		c-0.3,0.3-0.4,0.8-0.4,1.4V13.9z"/>
+</g>
+</svg>
+                    </a>
+                </h1>
+
+            </div><!-- .site-branding -->
+
+
+            <ul class="navigation--top">
+
+
+                <li class="search__button">
+
+                </li>
+
+
+            </ul>
+
+        </header><!-- #masthead -->
+
+        <div class="nook"><svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 120 120" style="enable-background:new 0 0 120 120;" xml:space="preserve">
+<polygon points="0,0 119.8,119.8 119.8,0 "/>
+</svg>
+        </div>
+
+<!--        <div id="articleheader">
+            <div>
+                <a href="http://www.tageswoche.ch" target="_blank"><img class="logo_content" src="images/RZ_LOGO_TAWO_NEU17.png" /></a>
+                <a class="socialshare twitter" href="#" target="_self"></a>
+                <a class="socialshare facebook" href="#" target="_self"></a>
+            </div>
+        </div>-->
+        <div class="lead">
+        <h2>{{ parsedEntries[0].einleitungtitel }}</h2>
+            <p>{{ parsedEntries[0].einleitung }}</p>
+        </div>
+
+        <article ng-repeat="entry in parsedEntries" class="offset" style="background-image:url('images/standorte/{{ entry.images }}.jpg');" id="{{ entry.anker }}">
+            <!--<span>{{ entry.tag }}<br/><strong>{{ entry.stunde }} Uhr</strong></span>-->
+            <div class="articlecontainer">
+                <h2>{{ entry.titel }}</h2>
+                <p ng-bind-html="entry.inhalt">{{ entry.inhalt }}</p>
+                <span class="post-meta"></span>
+            </div>
+        </article>
+        
+    </section>
+      
+    <footer>
+    <p>
+        <b>Konzept &amp; Text:</b> <a class="credits_link" href="https://content-queen.ch/" target="_blank">Christine Waelti</a>, Stephanie Gygax<br>
+        <b>Design &amp; Code:</b> Felix Michel, Stefan Kempf<br>
+        <b>Bilder:</b> <a class="credits_link" href="http://donataettlin.com/" target="_blank">Donata Ettlin</a>
+        
+        
+    </p>
+      
+    </footer>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/leaflet/dist/leaflet-src.js"></script>
+    <script src="bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
+    <script src="bower_components/angular-media-queries/match-media.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/services.js"></script>
+    <script src="scripts/controllers.js"></script>
+        <!-- endbuild -->
+
+<!-- Asynchronous google analytics-->
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-22593782-4']);
+    _gaq.push(['_setDomainName', 'tageswoche.ch']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+    
+</body>
+</html>

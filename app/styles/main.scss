@@ -1,0 +1,809 @@
+@import 'partials/reset'; // reset all tags
+@import 'partials/font-face';
+@import 'partials/variables'; // colors, fonts etc...
+@import 'partials/layout'; // layout
+@import 'partials/breakpoint'; // layout
+
+body {
+    background-color: #fff;}
+html {overflow-y: scroll;}
+
+.spinner {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: white;
+    z-index: 99;
+    text-align: center;
+}
+
+.inner-spinner {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 50px 50px 0;
+    border-color: transparent #008147 transparent transparent;
+    opacity: 0;
+
+    margin: 30% auto;
+    animation: rotate-triangle 2.4s infinite ease-in-out;
+    animation-delay: 1s;
+    @include MQ(M) {
+        margin-top: 60%;
+    }
+}
+
+@keyframes rotate-triangle {
+    0% {
+        transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+        border-width: 0 50px 50px 0;
+        opacity: 1;
+        }
+    14% {
+        border-width: 0 45px 45px 0;
+        }
+    25% {
+        transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+        border-width: 0 50px 50px 0;
+        }
+    37% {
+        border-width: 0 45px 45px 0;
+        }
+    50% {
+        transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+        border-width: 0 50px 50px 0;
+        }
+    67% {
+        border-width: 0 45px 45px 0;
+        }
+    75% {
+        transform: perspective(120px) rotateX(-360deg) rotateY(-180deg);
+        border-width: 0 50px 50px 0;
+        }
+    87% {
+        border-width: 0 45px 45px 0;
+        }
+    100% {
+        transform: perspective(120px) rotateX(-360deg) rotateY(-360deg);
+        border-width: 0 50px 50px 0;
+        opacity: 1;
+        }
+}
+
+// Map Formats
+
+
+b {
+  font-weight: 700;
+}
+
+strong {
+    font-weight: 700;
+}
+
+i {
+    font-style: italic;
+}
+
+.clear {
+    clear:both;
+}
+
+#mapContainer {
+    position:fixed;
+    top:0;
+    left:0;
+    height:100vh;
+    width:100vw;
+    display:block !important;
+    z-index:2;
+}
+
+.leaflet-right {
+    display: none;
+}
+
+.leaflet-top {
+  @include MQ(M) {
+        top:auto;
+        bottom:75px;
+        display:none;
+        }
+}
+
+#mapContainer > div.angular-leaflet-map {
+    height:100%;
+    width:100%;
+}
+
+// Legende
+
+#legende {
+    position: fixed;
+    bottom: 10%;
+    right: 10px;
+    z-index: 1;
+    background-color:rgba(255,255,255,1);
+    padding:30px;
+    width:25%;
+    box-shadow: 5px 5px 30px -8px rgba(0,0,0,0.75);
+        @include MQ(M) {
+            width: 90%;
+            height:50px;
+            top:0;
+            left:0;
+            bottom:auto;
+            padding:10px 5% 5px 5%;
+            overflow:hidden;
+            background-color:rgba(255,255,255,1);
+            transition:all 0.5s ease;
+        }
+}
+
+#legende h2 {
+    @include NeueHaasGrotDisp-65Medium-Web;
+    font-size:18px;
+    margin-bottom: 10px;
+    line-height: 22px;
+    @include breakpoint($breakpoint--m) {
+        font-size:$laufschrift-size;
+        margin-bottom:$elementmargin;
+        line-height: $laufschrift-lineheight-M;
+
+    }
+
+}
+
+#legende p {
+    font-family:$laufschrift;
+    font-size: 16px;
+    line-height: 20px;
+    @include breakpoint($breakpoint--m) {
+        font-size:$laufschrift-size;
+        margin-bottom:$elementmargin;
+        line-height: $laufschrift-lineheight-M;
+
+    }
+}
+
+#legende p {
+    margin-bottom:$elementmargin;
+}
+
+#legende p a {
+    color:$tawo;
+    text-decoration: none;
+    
+}
+
+#legende p a:hover {
+    border-bottom: 1px solid black;
+    border-bottom-color:$tawo;
+}
+
+#legende .logo {
+    width: 200px;
+    margin-left: -35px;
+    margin-top: -49px;
+        @include MQ(S) {
+            width: 150px;
+            margin-top: -26px;
+            margin-left: -22px;
+    
+    }
+}
+
+#legende .dreieck {
+    width: 200px;
+    margin-left: -35px;
+    margin-top: -49px;
+    @include MQ(S) {
+        width: 150px;
+        margin-top: -26px;
+        margin-left: -22px;
+
+    }
+}
+
+.site-header {
+
+    @include site--gutter;
+    background-color: rgba($color__white, .997);
+    display: flex;
+    justify-content: space-between;
+    height: $header__height--mobil;
+    @include breakpoint($breakpoint--m) {
+        height: $header__height--desktop;
+    }
+
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    border-bottom: 3px solid $color__border;
+}
+
+.site {
+    background-color: $color__white;
+}
+
+.site-branding {
+    flex: 1 0 100%;
+    padding-top: 15px;
+    max-width: 120px;
+    width: 120px;
+    @include breakpoint( $breakpoint--m ) {
+        max-width: 190px;
+        width: 190px;
+        padding-top: $space--m;
+
+    }
+
+    svg {
+        width: 100%;
+        max-width: 100%;
+    }
+
+}
+
+.site-title {
+    margin: 0;
+    padding-left: 6px;
+
+    svg {
+        fill: $color__black;
+        max-height: 65px;
+    }
+}
+
+.map-branding {
+    flex: 1 0 100%;
+    max-width: 120px;
+    width: 120px;
+    padding-bottom: 10px;
+    margin-left: -4px;
+    @include breakpoint( $breakpoint--m ) {
+        max-width: 190px;
+        width: 190px;
+
+    }
+
+    svg {
+        width: 100%;
+        max-width: 100%;
+    }
+
+}
+
+.map-title {
+    margin: 0;
+
+    svg {
+        fill: $color__black;
+        height: 55px;
+    }
+}
+
+.nook {
+    svg * {
+        fill: $color__primary;
+    }
+
+    width: 40px;
+    height: 40px;
+    display: block;
+    position: fixed;
+    z-index: 1;
+    top: 4px;
+    left: 0;
+    transform: translateX( calc( 100vw - 45px ) ) translateY(5px);
+
+    @include breakpoint($breakpoint--m) {
+        transform: translateX( calc( 50vw + ( #{($site__width--m - $grid--gap) / 2} + 10px ) ) ) translateY(5px);
+    }
+
+    @include breakpoint($breakpoint--l) {
+        transform: translateX( calc( 50vw + ( #{($site__width--l - $grid--gap) / 2} + 10px ) ) ) translateY(5px);
+    }
+
+    @include breakpoint($breakpoint--xl) {
+        transform: translateX( calc( 50vw + ( #{($site__width--xl - $grid--gap) / 2} + 20px ) ) ) translateY(5px);
+    }
+
+    @media all and (-ms-high-contrast:none) {
+        //.foo { color: green } /* IE10 */
+        *::-ms-backdrop, & { right: 0; transform: none; } /* IE11 */
+    }
+
+}
+
+.nook-map {
+    svg * {
+        fill: $color__primary;
+    }
+
+    width: 40px;
+    height: 40px;
+    display: block;
+    z-index: 1000;
+    position: absolute;
+    top: 18px;
+    right: 30px;
+    display: none;
+    @include breakpoint($breakpoint--m) {
+        display: block;
+    }
+
+}
+
+.offset {
+    border-top: 65px solid transparent;
+    margin-top: -65px;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+}
+
+// mobile navigation settings
+
+.mobilenav {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+
+label[for="mobilenav"] {
+    display: none;
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 2;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background:url("../images/labels/menuopen.svg") no-repeat;
+    transition:all 0.7s ease-in-out;
+        @include MQ(M) {
+            display:inline-block;
+         }
+        @include MQ(S) {
+            margin-top: 4px;
+        }
+}
+
+
+.mobilenav:checked ~ label {
+    background:url("../images/labels/menuclose.svg");
+}
+.mobilenav:checked ~ #legende {
+        @include MQ(M) {
+            height: 350px;
+    }
+         @include MQ(S) {
+            height:450px;
+    }
+}
+
+#legende a:nth-child(2) {
+    @include MQ(M) {
+        margin-right:35px !important;
+    }
+}
+
+@keyframes titelswipe {
+    0% {opacity: 100%; visibility: visible;}
+    
+    100% {opacity:0; visibility: hidden;}
+}
+.starttitel {
+    z-index:100;
+    position:fixed;
+    top:20px;
+    width:100%;
+    opacity:100;
+    height: 600px;
+    animation: titelswipe 1.3s ease-in 2s forwards;
+    background-image: url("../images/social/JagdWoche_Deer_d.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+        @include MQ(M) {
+            background-image: url("../images/social/JagdWoche_Deer_m.png");
+            top:40px;
+            background-position: top center;
+
+
+        }
+}
+
+.hide-titel {
+    display:none;
+}
+
+.leaflet-popup-content h2 {
+    padding-top:6px;
+    @include NeueHaasGrotDisp-65Medium-Web;
+    font-size: $laufschrift-size + 11px;
+    font-weight: $titel-weight;
+    line-height: $laufschrift-lineheight-M;
+    @include MQ(S) {
+            font-size: $laufschrift-size-mobile + 8px;
+        }
+}
+
+.leaflet-popup-content p {
+    font-family: $laufschrift;
+    font-size: $laufschrift-size;
+    font-weight: $laufschrift-weight;
+    margin-top:8px;
+    @include MQ(S) {
+            font-size: $laufschrift-size-mobile;
+            line-height: $laufschrift-lineheight-S;
+        }
+}
+
+.leaflet-popup-content a {
+    font-family: $laufschrift;
+    font-size: $laufschrift-size;
+    font-weight: $laufschrift-weight;
+    text-decoration:none;
+    color:$tawo;
+}
+
+.leaflet-popup-content a:hover {
+    border-bottom:1px solid;
+    border-bottom-color: $tawo;
+}
+
+.leaflet-marker-icon, .leaflet-marker-shadow {
+    animation: fadein 1.2s;
+    opacity:1;
+    transition: all 1.2s ease;
+}
+
+.leaflet-popup-close-button {
+    font-size:22px !important;
+    color:$tawo !important;
+    padding: 9px 9px 0 0 !important;
+}
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.leaflet-popup {
+padding-top:70px;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+top:70px;
+}
+
+#startbutton {
+    @include NeueHaasGrotDisp-65Medium-Web;
+    font-size:25px;
+    color:white;
+    position: fixed;
+    bottom: 10px;
+    left:0;
+    right:0;
+    margin:0 auto;
+    width:250px;
+    text-align:center;
+    display:block;
+    padding:12px 24px;
+    background-color:rgba(0, 0, 0, 0.5);
+    border:1px solid white;
+    text-decoration:none;
+    z-index:3;
+    transition:background 1s ease;
+    @include MQ(S) {
+        width:180px;
+        padding:8px 4px;
+        font-size:20px;
+        
+    }
+}
+
+#startbutton:hover {
+    background-color:rgba(0, 0, 0, 0.8);
+}
+
+
+
+.ng-hide:not(.ng-hide-animate) {
+    /* this is just another form of hiding an element */
+    display: block!important;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.33s ease-out;
+}
+
+// Content Formats
+
+
+
+#content {
+    margin:0 auto;
+    width:100%;
+    @include site--gutter;
+}
+
+#content > article {
+    width:100%;
+    background-size:100% auto;
+    background-repeat:no-repeat;
+    padding-top:41%;
+    margin-bottom:50px;
+        @include MQ(M) {
+            background-size: 120% auto;
+            background-position: top center;
+            
+    }
+        @include MQ(S) {
+            padding-top:68%;
+            background-size: 140% auto;
+            
+        }
+}
+
+#content > article:after {
+    content:"● ● ●";
+    color:$mediumgrey;
+    margin: 50px auto;
+    display: table;
+        @include MQ(S) {
+            content:"";
+        }
+}
+
+/*
+#content > article:last-child:after {
+    display:none;
+}
+*/
+
+.lead {
+    width: 100%;
+    background: none;
+    margin: -65px auto 30px auto;
+    border-top: 65px solid transparent;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+    @include MQ(M) {
+            width: 90%;
+        }
+        @include MQ(S) {
+            width: 100%;
+        }
+}
+
+#freitagstart {
+    padding-top:20px;
+}
+
+.articlecontainer {
+    width:80%;
+    background:#fff;
+    margin:0 auto;
+    /* border-bottom: 8px solid $darkgrey; */
+    box-shadow: 0px 0px 76px -15px rgba(0,0,0,0.28);
+        @include MQ(M) {
+            width: 90%;
+        }
+        @include MQ(S) {
+            width: 100%;
+        }
+}
+
+.lead p {
+    font-family:$laufschrift;
+    font-weight:$laufschrift-weight;
+    font-size:$laufschrift-size;
+    line-height: $laufschrift-lineheight-M;
+    padding: 0 5px;
+    @include MQ(S) {
+        font-size: $laufschrift-size-mobile;
+        line-height: $laufschrift-lineheight-S;
+    }
+}
+
+.articlecontainer p {
+    font-family:$laufschrift;
+    font-weight:$laufschrift-weight;
+    font-size:$laufschrift-size;
+    line-height: $laufschrift-lineheight-M;
+    padding:0 $padding-articlecontainer 30px $padding-articlecontainer;
+        @include MQ(S) {
+            font-size: $laufschrift-size-mobile;
+            line-height: $laufschrift-lineheight-S;
+        }
+}
+
+.articlecontainer p a {
+    color:$tawo;
+    text-decoration: none;
+}
+
+.articlecontainer p a:hover {
+    border-bottom:1px solid $tawo;
+}
+
+.articlecontainer figure > img {
+    width:100%;
+}
+
+.articlecontainer figure {
+    margin:20px 0 10px 0;
+    background:$lightgrey;
+}
+
+.articlecontainer figure figcaption {
+    color:$darkgrey;
+    @include NeueHaasGrotDisp-65Medium-Web;
+    font-size:$laufschrift-size - 3px;
+    line-height: normal;
+    padding: 0 0 10px 0;
+    
+}
+
+.lead h2 {
+    @include NeueHaasGrotDisp-65Medium-Web;
+    font-size:$titel-size;
+    color:$color__black;
+    padding: 20px 5px;
+    @include MQ(S) {
+        font-size: $titel-size-mobile;
+    }
+}
+
+
+.articlecontainer h2 {
+    @include NeueHaasGrotDisp-65Medium-Web;
+    font-size:$titel-size;
+    color:$color__black;
+    padding: 20px $padding-articlecontainer;
+        @include MQ(S) {
+            font-size: $titel-size-mobile;
+        }
+}
+
+.articlecontainer h3 {
+    @include NeueHaasGrotDisp-65Medium-Web;
+    font-size: 24px;
+    margin-top:20px;
+    line-height: $laufschrift-lineheight-M;
+}
+
+#content article > span {
+    color:#fff;
+    font-family:$laufschrift;
+    font-size:22px;
+    font-weight:$laufschrift-weight;
+    line-height:28px;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.77);
+    margin:-64px 12% 0 0;
+    float:right;
+        @include MQ(S) {
+            margin-right: 2%;
+        }
+}
+
+#content article > span strong {
+    font-weight:$titel-weight;
+    font-size:29px;
+}
+
+.post-meta {
+    display:block;
+    background: $darkgrey;
+    color: $lightgrey;
+    text-align: center;
+    @include NeueHaasGrotDisp-65Medium-Web;
+    font-weight:$laufschrift-weight;
+    font-size:$laufschrift-size;
+    line-height: $laufschrift-lineheight-M;
+            @include MQ(S) {
+            font-size: $laufschrift-size-mobile;
+            line-height: $laufschrift-lineheight-S;
+        }
+}
+
+.post-meta a {
+    display: inline-block;
+    color: $lightgrey;
+    text-decoration: none;
+}
+
+.post-meta a:before {
+    content:" ";
+    background-size: 14px;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    position:relative;
+    left:-6px;
+    top: 1px;
+}
+
+.post-meta a:nth-child(1) {
+    padding-right:15px;
+}
+.post-meta a:nth-child(2) {
+    padding-left:15px;
+}
+.post-meta a:nth-child(1):before {
+    background:url("../images/labels/routenplaner-small.svg") no-repeat;
+    
+}
+
+.post-meta a:nth-child(2):before {
+   
+    background:url("../images/labels/link.svg") no-repeat;
+   
+}
+
+.post-meta a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    display:block;
+    height:110px;
+    width:100%;
+    background:$lightgrey;
+    
+}
+
+footer p {
+    width:100%;
+    max-width:1100px;
+    margin:0 auto 100px auto;
+    text-align: right;
+    padding-top:15px;
+    color:$darkgrey;
+    @include NeueHaasGrotDisp-65Medium-Web;
+    font-weight:$laufschrift-weight;
+    font-size:$laufschrift-size-mobile;
+    line-height: $laufschrift-lineheight-M;
+        
+        @include MQ(L) {
+            width:auto;
+            padding-right:10%;
+    }
+        @include MQ(M) {
+            padding-right:5%;
+    }
+        @include MQ(S) {
+            
+            padding-right:20px;
+            font-size: $laufschrift-size-mobile - 2px;
+            line-height: $laufschrift-lineheight-S;
+        }
+}
+
+footer p b{
+    @include MQ(S) {
+        display:block;
+    }
+}
+
+.credits_link {
+    text-decoration: none;
+    color: $color__primary;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+// bower:scss
+// endbower

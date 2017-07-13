@@ -1,0 +1,97 @@
+#widget1, #widget2, #widget3 {
+
+  margin: 0 0 5px 0;
+}
+
+#widget1 div, #widget2 div, #widget3 div {
+  height: auto;
+}
+
+.app-rotblau-box-line {
+  width: 100% !important;
+}
+
+.app-rotblau-box-team {
+  width: auto;
+}
+
+.app-rotblau-box-img {
+  min-height: 20px;
+  background-color: white !important;
+  background-repeat: no-repeat;
+}
+
+.entry-football-widget {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+
+  @include breakpoint($breakpoint--m) {
+    flex-direction: row;
+
+  }
+}
+
+.entry-football-widget > div:last-child {
+
+  width: 100% !important;
+
+  @include breakpoint($breakpoint--m) {
+    width: 50% !important;
+  }
+
+}
+
+.entry-football-widget > div:first-child {
+
+  width: 100% !important;
+
+  @include breakpoint($breakpoint--m) {
+    width: 45% !important;
+    margin-right: 5%;
+  }
+
+}
+
+#widget2 > div > div > div.app-rotblau-box-line.app-rotblau-box-title.app-rotblau-cutSingleLineText {
+  padding-top: 4px;
+}
+
+.entry-football-widget *, #widget7 * {
+  @include NeueHaasGrotDisp-55Roman-Web;
+
+  font-size: ms(1);
+  @include breakpoint($breakpoint--m) {
+    font-size: ms(1);
+  }
+}
+
+.app-rotblau-box-title {
+  font-weight: bold;
+}
+
+.app-rotblau-category span {
+  background: $default--color;
+}
+
+.app-rotblau-live-event {
+  height: auto;
+  display: inline-block;
+}
+
+div.app-rotblau-live-img {
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 999px;
+}
+
+.app-rotblau-live-final {
+  font-size: ms(8) !important;
+  font-weight: bold;
+}
+
+.app-rotblau-live-gameInfo strong {
+  font-weight: normal !important;
+  font-size: ms(1) !important;
+}
