@@ -1,6 +1,6 @@
-# 72 Hours Basel
+# Jagdwoche
 
-This project is a City Guide for Basel created by TagesWoche. It uses angular and leaflet.
+Marketing project for TagesWoche. It uses angular and leaflet.
 
 ## Get the project
 
